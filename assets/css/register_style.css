@@ -1,0 +1,118 @@
+form{
+    text-align: center;
+}
+
+body {
+    /* Location of the image */
+    background-image: url(../images/background/1.jpg);
+    
+    /* Background image is centered vertically and horizontally at all times */
+    background-position: center center;
+    
+    /* Background image doesn't tile */
+    background-repeat: no-repeat;
+    
+    /* Background image is fixed in the viewport so that it doesn't move when 
+       the content's height is greater than the image's height */
+    background-attachment: fixed;
+    
+    /* This is what makes the background image rescale based
+       on the container's size */
+    /*background-size: 100%;*/
+
+    /*it will cover the background image to whole page no matter the page size*/
+    background-size: cover;
+  
+    /*background-position: 100% top left; */
+    
+    /* Set a background color that will be displayed
+       while the background image is loading */
+    background-color: #464646;
+  }
+  
+
+.wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    
+    transform: translate(-50%, -50%);
+}
+
+a{
+	text-decoration: none;
+	color: #3498db;
+	font-size: 16pt;
+}
+
+.login_box {
+	
+	position: relative;
+	margin-right: auto;
+	margin-left: auto;
+	/*margin-top:7%;*/
+	width: 30%;
+	min-width: 450px;
+	background-color: rgba(10, 124, 158, 0.08);
+	border: 3px solid #fff;
+	border-radius: 15PX;
+	padding-top: 40px;
+	box-shadow: 1px 1px 20px 0px #0a0a0a5c;;
+	/*opacity: 0.8;*/
+}
+
+.login_header{
+    position: relative;
+	width: 100%;
+	height:150px;
+	background-color: rgba(40, 117, 160, 0.72);
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	margin-bottom: 5px;
+	color:#fff;
+	font-size: 20pt;
+	text-align: center;
+
+}
+
+.login_header h1{
+	margin-top: 0;
+	padding-top: 2%;
+	margin-bottom: 0;
+	color: #fff;
+	font-size: 250%;
+	text-shadow: #09132973 -1px 2px 2px;
+}
+
+input[type="submit"]{
+	background-color: #3498db;
+	border:1px solid #3498db;
+	border-radius: 3px;
+	margin: 5px 0 10px;
+	padding:5px 10px 5px 10px;
+	color:#fff;
+	text-shadow: #73b6e2 0.5px 0.5px 0px;
+	font-family: 'Bellota-BoldItalic',sans-serif;
+	font-size: 100%;
+}
+
+input[type="text"],input[type="email"],input[type="password"]{
+	border:2px solid #cdd4d8;
+	margin-top: 3px;
+	width: 75%;
+	height: 35px;
+	margin-bottom: 10px;
+	padding-left: 5px;
+	font-size: 100%
+}
+
+
+#second{
+	display: none;
+
+}
+
+#first{
+
+
+}

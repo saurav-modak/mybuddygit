@@ -1,0 +1,2 @@
+# mybuddygit
+ Social networking project
