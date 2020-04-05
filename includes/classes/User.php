@@ -30,8 +30,15 @@
             return  $this->user['username'];
         }
 
+        public function getUsernameByPostID($post_id){
+            $query = mysqli_query($this->con,"SELECT added_by FROM `posts` WHERE id='$post_id'");
+            $user=mysqli_fetch_array($query);
+            return $user[0];
+        } 
+
+
         public function getFirstAndLastName(){
-            return  $this->user['first_name']." ". $this->user["last_name"];
+            return  $this->user['first_name']." ". $this->user['last_name'];
         }
 
         public function getProfilePic(){
@@ -90,6 +97,7 @@
                 return false;
             }
         }
+
 
 
         public function removeFriend($user_to_remove) {

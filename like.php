@@ -54,7 +54,14 @@
             //$insert_user = mysqli_query($con,"INSERT INTO likes VALUES('','$userLoggedIn','$post_id')"); //'' is the problem
             $insert_user = mysqli_query($con,"INSERT INTO likes VALUES(NULL,'$userLoggedIn','$post_id')");//NULL is the solution
 
+            $user_obj = new User($con,$userLoggedIn);
+            $post_added_by=$user_obj->getUsernameByPostID($post_id);
             //insert notification
+            if($post_added_by != $userLoggedIn){
+                require 'includes/classes/Notification.php';
+                $notification = new Notification($con,$userLoggedIn);
+                $notification->insertNotification($post_id,$post_added_by,"like");
+            }
         }
 
         //Handle unlike button
