@@ -45,7 +45,7 @@
 
         print_r($num_rows);
 
-        //Handle like
+        //Handle likes
         if(isset($_POST['like_button']) && $num_rows == 0){
             $total_likes++;
             $query=mysqli_query($con, "UPDATE posts SET likes='$total_likes' WHERE id='$post_id'");
