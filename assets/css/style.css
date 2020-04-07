@@ -68,12 +68,19 @@ body {
 	text-shadow: #000 -2px 2px 0px;
 }
 
+.top_bar nav{
+	margin-bottom:auto;
+	margin-top:auto;
+	margin-right:0px;
+	margin-left:auto;
+}
+/*
 nav{
 	float: right;
 	right: 1px;
 	position: absolute;
 	margin: 10px;
-}
+}*/
 nav a{
 	position: relative;
 	color: #fff;
@@ -99,8 +106,6 @@ nav a:hover{
 	padding: 0 10px;
 	width: 75%;
 	min-width:950px;
-	
-	
 }
 
 .column{
@@ -440,14 +445,12 @@ textarea:focus{
 }
 
 .search{
-	margin: 8px 500px 0 auto;
-	/*margin-left:auto;
-	margin-right:auto;
-	margin-top:7px;
-	margin-bottom:7px;
-	width:60%;*/
+	margin:auto;
+	
 	
 }
+
+
 .search #search_text_input{
 	/*border: thin solid #E5E5E5;*/
 	float:left;
@@ -698,7 +701,7 @@ p#sectuser{
 	 clear:left; 
 }
 .message_post input[type=text]{
-	 margin-bottom:34px;
+	 margin-bottom:34px;		
 	 width: 100%;
 	 font-size: 22px;
 }
