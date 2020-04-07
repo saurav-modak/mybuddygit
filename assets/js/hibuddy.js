@@ -19,8 +19,8 @@ $(document).ready(function() {
 	});
 
 	$('#search').click(function(){
-        if(window.matchMedia("(min-width: 800px)").matches){
-            $('#search_text_input').animate({width: '350px'},500);
+        if(window.matchMedia("(min-width: 200px)").matches){
+            $('#search_text_input').animate({width: '250px'},500);
         }
     });
     $('.button_holder').on('click',function(){

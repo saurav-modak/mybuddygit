@@ -22,7 +22,12 @@ if(isset($_SESSION['username'])){
         <title>Welcome to MyBuddy</title>
 
         <!-- Javascript -->
+        <!--
+        Hotfix jaquery with older version bacuse of internet connection lost.
+        Please change this to letest version as soon as possible. if you are reading this comment in future.
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        -->
+        <script src="assets/js/jquery-2.2.3.min.js"></script>
         <script src="assets/js/bootstrap.js"></script>
         <script src="assets/js/bootbox.all.min.js"></script>
         <script src="assets/js/hibuddy.js"></script>

@@ -105,13 +105,38 @@ if(isset($_POST['respond_request'])) {
 		</nav>
 		<div class="tab-content" id="nav-tabContent">
 			<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-				
-				<div class="posts_area" id="posts_area"></div>
-				<img class="loading" id="loading" alt="Loading" src="assets/images/icons/ajax-loader.gif">
-				
+					<!-- Posts area -->
+					<div class="posts_area" id="posts_area"></div>
+					<img class="loading" id="loading" alt="Loading" src="assets/images/icons/ajax-loader.gif">
 			</div>
-			<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
-			<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+
+			<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+				...
+			</div>
+
+			<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+				<!-- Loag Messages -->
+				<?php
+					echo "<h4>You and <a href='".$username."'>".$profile_user_obj->getFirstAndLastName()."</a><hr>";
+					echo "<div class='load_messages'>";
+						$message_obj = new Message($con,$userLoggedIn);
+						echo $message_obj -> getMessages($username);
+					echo "</div>";
+				?>
+
+				<div class="message_post">
+					<form action="" method="POST">
+						<textarea name='message_body' id='message_textarea' placeholder='Write your message...'></textarea>
+						<input type='submit' name='post_message' class='info' id='message_submit' value='Send'>
+					</form>
+
+				</div>
+
+				<script>
+				$('.load_messages').scrollTop($('.load_messages')[0].scrollHeight);
+				//alert("This page is under construction");
+				</script>
+			</div>
 		</div> 
 	</div>
 </div>
