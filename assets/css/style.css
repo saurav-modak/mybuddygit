@@ -624,6 +624,11 @@ textarea:focus{
 }
 
 /* Live Search */
+p#sectuser{
+	font-size:22.7px;
+	text-align:left;
+}
+#main_column{ min-height:567px; }
 
 .search_results a img{
 	width:100px;
@@ -672,5 +677,35 @@ textarea:focus{
 	margin-top:36px;
 }
 
-
-
+/* New message live search */
+.liveSearchProfilePic img{
+	width: 120px;
+    padding: 10px 20px 10px 10px;
+	float: left;
+}
+.liveSearchText{
+	float: left;
+	padding: 10px 10px 10px 10px;
+}
+.liveSearchText p#resultname{
+	font-weight: 400;
+	font-size: 20px;
+}
+.liveSearchText p#grey{
+	margin-top:-18px;
+}
+.results .resultDisplay{
+	 clear:left; 
+}
+.message_post input[type=text]{
+	 margin-bottom:34px;
+	 width: 100%;
+	 font-size: 22px;
+}
+.resultDisplay{
+	height:110px;
+	background-color:#ecf0f1 !important;
+}
+.resultDisplay:hover{
+	padding-left:5px;
+}
