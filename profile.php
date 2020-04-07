@@ -74,9 +74,18 @@ if(isset($_POST['respond_request'])) {
  			?>
 			 <!-- Button trigger modal -->
 			 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#post_form">Post Something</button>
-			 
+
+			 <?php
+			 	if($userLoggedIn != $username){
+			 		echo '<a href="messages.php?u='.$username.'"> 
+					<button type="button" class="btn btn-primary">Send a Message</button>';
+				}
+			?>
+		 	</a>
 		 </form>
+		 
 		 <?php
+
 			if($userLoggedIn != $username){
 				echo '<div class="profile_info_buttom">';
 					echo $logged_in_user_obj -> getMutualFriends($username). " Mutual Friends";
@@ -88,7 +97,7 @@ if(isset($_POST['respond_request'])) {
 	
 	 <div class="profile_main_column column left">
 		<nav>
-			<div class="nav nav-tabs navbar navbar-dark bg-secondary rounded-pill" id="nav-tab" role="tablist">
+			<div class="nav nav-tabs navbar navbar-light bg-secondary rounded-pill" id="nav-tab" role="tablist">
 				<a class="nav-item nav-link active rounded-pill" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">News Feed</a>
 				<a class="nav-item nav-link rounded-pill" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">About</a>
 				<a class="nav-item nav-link rounded-pill" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Messages</a>
