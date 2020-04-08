@@ -31,6 +31,21 @@ $(document).ready(function() {
 
 });
 
+$(document).click(function(e){
+	//This hides the search result dropdown when clicked outside
+	if(e.target.class != "search_results" && e.target.id != "search_text_input"){
+		$('.search_results').html("");
+		$('.search_results_footer').html("");
+		$('.search_results_footer').toggleClass("search_results_footer_empty");
+		$('.search_results_footer').toggleClass("search_results_footer");
+	}
+
+	//This hides the navbar message dropdown when clicked outside
+	if(e.target.class != "dropdown_data_window"){
+		$('.dropdown_data_window').html("");
+		$('.dropdown_data_window').css({"padding" : "0px", "height" : "0px"});
+	}
+})
 
 function getUsers(value, user) {
 	$.post("includes/handlers/ajax_friend_search.php", {query:value, userLoggedIn:user}, function(data) {
@@ -40,7 +55,7 @@ function getUsers(value, user) {
 
 function getDropdownData(user, type) {
 
-	if($(".dropdown_data_window").css("height") == "0px") {
+	if($(".dropdown_data_window").css("height") == "2px") {
 
 		var pageName;
 
@@ -61,7 +76,7 @@ function getDropdownData(user, type) {
 
 			success: function(response) {
 				$(".dropdown_data_window").html(response);
-				$(".dropdown_data_window").css({"padding" : "0px", "height": "280px", "border" : "1px solid #DADADA"});
+				$(".dropdown_data_window").css({"padding" : "10 10 30 10", "height": "330px", "border" : "1px solid #DADADA"});
 				$("#dropdown_data_type").val(type);
 			}
 
@@ -70,7 +85,7 @@ function getDropdownData(user, type) {
 	}
 	else {
 		$(".dropdown_data_window").html("");
-		$(".dropdown_data_window").css({"padding" : "0px", "height": "0px", "border" : "none"});
+		$(".dropdown_data_window").css({"padding" : "0px", "height": "2px", "border" : "none"});
 	}
 
 }
@@ -89,7 +104,7 @@ function getLiveSearchUsers(value, user) {
 		$('.search_results').html(data)
 		$('.search_results_footer').html("<a href='search.php?q="+value+"'>See All Results</a>")
 
-		if(data == NULL){
+		if(data == ""){
 			$('.search_results_footer').html("");
 			$('.search_results_footer').toggleClass("search_results_footer_empty");
 			$('.search_results_footer').toggleClass("search_results_footer");
