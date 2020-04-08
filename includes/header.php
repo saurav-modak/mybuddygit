@@ -75,7 +75,7 @@ if(isset($_SESSION['username'])){
 			<a href="index.php">
 				<i class="fas fa-home"></i>
 			</a>
-			<a href="messages.php">
+			<a href="javascript:void(0);" onclick="getDropdownData('<?php echo $userLoggedIn; ?>', 'message');">
 				<i class="fas fa-envelope"></i>
 			</a>
 
@@ -100,5 +100,7 @@ if(isset($_SESSION['username'])){
 			</a>
 
 		</nav>
+        <div class="dropdown_data_window" style="height:0px;"></div>
+        <input type="hidden" id="dropdown_data_type" value=""/>
     </div>
     <div class="wrapper">
