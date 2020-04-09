@@ -63,6 +63,8 @@ if(isset($_SESSION['username'])){
         <nav>
             <?php
                 //Unread messages
+                $messages = new Message($con, $userLoggedIn);
+                $num_messages = $messages -> getUnreadNumber();
 
                 //Unread notifications
                 $notifications = new Notification($con, $userLoggedIn);
@@ -77,6 +79,7 @@ if(isset($_SESSION['username'])){
 			</a>
 			<a href="javascript:void(0);" onclick="getDropdownData('<?php echo $userLoggedIn; ?>', 'message');">
 				<i class="fas fa-envelope"></i>
+                <span class="notification_badge" id="unread_message"><?php echo $num_messages; ?></span>
 			</a>
 
             <a href="javascript:void(0);" onclick="getDropdownData('<?php echo $userLoggedIn; ?>', 'notification')">

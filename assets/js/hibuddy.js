@@ -15,7 +15,6 @@ $(document).ready(function() {
 				alert('Failure');
 			}
 		});
-
 	});
 
 	$('#search').click(function(){
@@ -26,9 +25,6 @@ $(document).ready(function() {
     $('.button_holder').on('click',function(){
         document.search_form.submit();
     });
-   
-
-
 });
 
 $(document).click(function(e){
