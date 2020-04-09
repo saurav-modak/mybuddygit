@@ -70,6 +70,10 @@ if(isset($_SESSION['username'])){
                 $notifications = new Notification($con, $userLoggedIn);
                 $num_notifications = $notifications -> getUnreadNumber();
 
+                //Total number of friend requests
+                $user_obj = new User($con, $userLoggedIn);
+                $tota_friend_req = $user_obj -> numFriendReq();
+
             ?>
 			<a href="<?php echo $userLoggedIn; ?>">
 				<?php echo $user['first_name']; ?>
@@ -95,6 +99,11 @@ if(isset($_SESSION['username'])){
 
             <a href="requests.php">
 				<i class="fas fa-users"></i>
+                <?php
+                    if($tota_friend_req>0)
+                    echo '<sapn class="notification_badge" id="unread_notification">'.$tota_friend_req.'</sapn>';
+
+                ?>
 			</a>
 
 			<a href="settings.php">

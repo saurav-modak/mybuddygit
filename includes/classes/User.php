@@ -141,6 +141,12 @@
             return $mutualFriends;
         }
 
+        public function numFriendReq(){
+            $me = $this->user['username'];
+            $query=mysqli_query($this -> con,"SELECT * FROM friend_requests WHERE user_to='$me'");
+            return mysqli_num_rows($query);
+        }
+
         
     }
     
