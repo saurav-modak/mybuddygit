@@ -114,8 +114,11 @@ if(isset($_SESSION['username'])){
 				<!- session_destroy();//logout ->
 			</a>
 
-		</nav>
-        <div class="dropdown_data_window" style="height:0px;"></div>
-        <input type="hidden" id="dropdown_data_type" value=""/>
+        </nav>
+        <div class="message_dropdown">
+            <div class="dropdown_data_window" style="height:0px;"></div>
+            <div class="see_all_messages"></div>
+            <input type="hidden" id="dropdown_data_type" value=""/>
+        </div>
     </div>
     <div class="wrapper">

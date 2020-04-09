@@ -725,17 +725,40 @@ p#sectuser{
 	float: left;
 }
 
+.message_dropdown{
+	width: 400px;
+    position: absolute;
+    right: 124px;
+	top: 50px;
+	text-align: center;
+}
+
 .dropdown_data_window{
 	/*height: 350px;*/
     background-color: rgb(255, 255, 255);
     border: 1px solid rgb(218, 218, 218);
-    border-radius: 0px 0px 8px 8px;
-    /*padding: 10 10 30 10;*/
+    /*border-radius: 0px 0px 8px 8px;*/
+	/*padding: 10 10 30 10;*/
+	/*
     width: 300px;
     position: absolute;
     right: 124px;
-    top: 50px;
-    overflow: scroll;
+	top: 50px;
+	*/
+	text-align: left;
+	overflow-y:scroll;
+	overflow-x:hidden;
+}
+
+.see_all_messages{
+	background-color: #888888;
+	
+    font-variant-caps: normal;
+	font-weight: 500;
+	border-radius: 0px 0px 8px 8px;
+}
+.see_all_messages a{
+	color:#ffffff !important;
 }
 
 /* changing scroll bar style */

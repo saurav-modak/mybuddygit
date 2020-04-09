@@ -27,6 +27,8 @@ $(document).ready(function() {
     });
 });
 
+$message_dropdown_status = "hide";
+
 $(document).click(function(e){
 	//This hides the search result dropdown when clicked outside
 	if(e.target.class != "search_results" && e.target.id != "search_text_input"){
@@ -40,6 +42,9 @@ $(document).click(function(e){
 	if(e.target.class != "dropdown_data_window"){
 		$('.dropdown_data_window').html("");
 		$('.dropdown_data_window').css({"padding" : "0px", "height" : "0px"});
+		$(".see_all_messages").html("");
+		$message_dropdown_status = "hide";
+
 	}
 })
 
@@ -49,9 +54,13 @@ function getUsers(value, user) {
 	});
 }
 
+//message badge
 function getDropdownData(user, type) {
+	
 
-	if($(".dropdown_data_window").css("height") == "2px") {
+	
+	//if($(".dropdown_data_window").css("height") == "2px") {
+	if($message_dropdown_status == "hide") {
 
 		var pageName;
 
@@ -69,12 +78,15 @@ function getDropdownData(user, type) {
 			type: "POST",
 			data: "page=1&userLoggedIn=" + user,
 			cache: false,
-
 			success: function(response) {
+				
 				$(".dropdown_data_window").html(response);
-				$(".dropdown_data_window").css({"padding" : "10 10 30 10", "height": "330px", "border" : "1px solid #DADADA"});
+				$(".dropdown_data_window").css({"padding" : "10 10 30 10", "height": "450px", "border" : "1px solid #DADADA"});
 				$("#dropdown_data_type").val(type);
+				$(".see_all_messages").html("<a href='messages.php'>See All Messages</a>");
+				$message_dropdown_status = "show";
 			}
+			
 
 		});
 
@@ -82,6 +94,8 @@ function getDropdownData(user, type) {
 	else {
 		$(".dropdown_data_window").html("");
 		$(".dropdown_data_window").css({"padding" : "0px", "height": "2px", "border" : "none"});
+		$(".see_all_messages").html("");
+		$message_dropdown_status = "hide";
 	}
 
 }
