@@ -689,6 +689,7 @@ p#sectuser{
 .liveSearchText{
 	float: left;
 	padding: 10px 10px 10px 10px;
+	width:299px; 
 }
 .liveSearchText p#resultname{
 	font-weight: 400;
@@ -746,13 +747,20 @@ p#sectuser{
 	top: 50px;
 	*/
 	text-align: left;
-	overflow-y:scroll;
+	overflow-y:hidden;
 	overflow-x:hidden;
 }
+.dropdown_data_window:hover{
+	overflow-y:scroll;
+}
+.dropdown_data_window:focus{
+	overflow-y:scroll;
+
+}
+
 
 .see_all_messages{
 	background-color: #888888;
-	
     font-variant-caps: normal;
 	font-weight: 500;
 	border-radius: 0px 0px 8px 8px;
@@ -761,11 +769,16 @@ p#sectuser{
 	color:#ffffff !important;
 }
 
+.all_msg_txt{
+	width: 100%;
+}
+
 /* changing scroll bar style */
 /* width */
 ::-webkit-scrollbar {
-	width: 10px;
+	width: 15px;
   }
+  
   
   /* Track */
   ::-webkit-scrollbar-track {
@@ -783,4 +796,13 @@ p#sectuser{
   ::-webkit-scrollbar-thumb:hover {
 	background: #555;
 	width: 20px;
+  }
+  ::-webkit-scrollbar-thumb:focus {
+	background: #555;
+  }
+
+  /*notification droapdown*/
+
+  .notificationsProfilePic img{
+	  width: 50px !important;
   }

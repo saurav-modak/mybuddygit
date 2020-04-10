@@ -83,7 +83,7 @@ function getDropdownData(user, type) {
 				$(".dropdown_data_window").html(response);
 				$(".dropdown_data_window").css({"padding" : "10 10 30 10", "height": "450px", "border" : "1px solid #DADADA"});
 				$("#dropdown_data_type").val(type);
-				$(".see_all_messages").html("<a href='messages.php'>See All Messages</a>");
+				$(".see_all_messages").html("<a href='messages.php'><div class='all_msg_txt'>See All Messages</div></a>");
 				$message_dropdown_status = "show";
 			}
 			
