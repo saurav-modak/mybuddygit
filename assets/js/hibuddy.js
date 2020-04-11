@@ -63,14 +63,17 @@ function getDropdownData(user, type) {
 	if($message_dropdown_status == "hide") {
 
 		var pageName;
+		var see_all = "";
 
 		if(type == 'notification') {
 			pageName = "ajax_load_notifications.php";
 			$("span").remove("#unread_notification");
+			see_all = "<br>";
 		}
 		else if (type == 'message') {
 			pageName = "ajax_load_messages.php";
 			$("span").remove("#unread_message");
+			see_all = "<a href='messages.php'><div class='all_msg_txt'>See All Messages</div></a>"
 		}
 
 		var ajaxreq = $.ajax({
@@ -83,7 +86,7 @@ function getDropdownData(user, type) {
 				$(".dropdown_data_window").html(response);
 				$(".dropdown_data_window").css({"padding" : "10 10 30 10", "height": "450px", "border" : "1px solid #DADADA"});
 				$("#dropdown_data_type").val(type);
-				$(".see_all_messages").html("<a href='messages.php'><div class='all_msg_txt'>See All Messages</div></a>");
+				$(".see_all_messages").html(see_all);
 				$message_dropdown_status = "show";
 			}
 			

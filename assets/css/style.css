@@ -721,9 +721,14 @@ p#sectuser{
 }
 
 /* Message droap down window */
+
+.user_found_messages{
+	color:#43443f;
+}
 .dropdown_data_window .user_found_messages img{
 	width:69px;
 	float: left;
+	padding-right: 10px;
 }
 
 .message_dropdown{
@@ -804,5 +809,35 @@ p#sectuser{
   /*notification droapdown*/
 
   .notificationsProfilePic img{
-	  width: 50px !important;
+	  width: 55px !important;
+	  float: left;
+	  margin-right: 15px;
+	  border-radius: 80px;
   }
+
+.timestamp_smaller{
+	color: #b9b6b6;
+    font-weight: 500;
+}
+
+.single_notification{
+	min-height: 56px;
+}
+
+.message_dropdown hr{
+	border: 1px solid #999191;
+    width: 106%;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.message_dropdown .dropdown_data_window{
+	background-color:#ecf0f1 !important;
+}
+
+.notification_msg{
+	color: #43443f;
+}
+.single_notification :hover{
+	background-color: white;
+}

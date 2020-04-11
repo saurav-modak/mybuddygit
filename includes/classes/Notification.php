@@ -123,14 +123,21 @@ class Notification {
             $style=($row['opened'] == 'no') ? "background-color: #DDEDFF;" : "";
 
 
-            $return_string .= "<a href='".$row['link']."'>
+            $return_string .= "<div class='single_notification'>
+                <a href='".$row['link']."'>
                 <div class='notificationsProfilePic'>
                     <img src='".$user_data['profile_pic']."'>
                 </div>
-                <p class='timestamp_smaller' id='grey'>
+                <div class='timestamp_smaller'>
                     ".$time_message."
-                </p>".$row['message']."
-            </a><hr>"; 
+                </div>
+                <div class='notification_msg'>
+                    ".$row['message']."
+                </div>  
+                </a>
+            </div>
+            <div class='notification_hr'><hr></div>
+            "; 
         }
         //If posts were loaded
         if($count > $limit){
@@ -140,7 +147,7 @@ class Notification {
             $return_string .="<input type='hidden' class='noMoreDorpDownData' value='true'>
             <p style='text-align:center;>No more notification to load!</p>";
         }  
-        return $return_string;
+        return $return_string.="";
     }
 
     public function insertNotification($post_id, $user_to, $type){
