@@ -1,5 +1,6 @@
 <?php
 require 'config/config.php';
+include("includes/classes/Time.php");
 include("includes/classes/User.php");
 include("includes/classes/Notification.php");
 include("includes/classes/Post.php");

@@ -127,9 +127,22 @@ nav a:hover{
 
 .user_details{
 	width: 300px;
-	float: left;
+	/*float: left;*/
 	margin-bottom: 20px;
 }
+.user_details_wrap{
+	float: left;
+}
+.conver{
+	float: left;
+    width: 300px;
+}
+
+.user_details_wrap #conversations > a{
+	text-align:center;
+}
+
+
 
 .user_details_left_right{
 	width:125px;
@@ -755,6 +768,7 @@ p#sectuser{
 	overflow-y:hidden;
 	overflow-x:hidden;
 }
+
 .dropdown_data_window:hover{
 	overflow-y:scroll;
 }
@@ -762,7 +776,6 @@ p#sectuser{
 	overflow-y:scroll;
 
 }
-
 
 .see_all_messages{
 	background-color: #888888;
@@ -841,3 +854,92 @@ p#sectuser{
 .single_notification :hover{
 	background-color: white;
 }
+
+/* sidebar */
+.left_side_bar{
+	float: left;
+	padding: 0px !important;
+}
+
+.online_friends_frame{
+	padding: 0px;
+}
+
+.individual{ 
+	background-color: #2980b9;
+    border-radius: 20px;
+    padding: 5px 10px 5px 10px;
+	margin: 4px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 10px;
+	box-shadow:2px 1px 3px -1px #2980b9;
+	padding-bottom: 17px;
+	
+}
+.ind_name{
+	text-shadow:neon                                ;
+	font-weight:600;
+	color:white;
+	font-style:normal;
+	font-family:Arial, Helvetica, sans-serif !important;
+	text-shadow:rgba(0, 0, 0, 0.3) 0px 1px 1px;
+	font-size:14px;
+	text-align:center;
+	text-transform:capitalize;
+	letter-spacing:0.7px;
+	word-spacing:inherit;
+}
+.online_friends .individual .ind_log_time{
+	color:#ffffff;
+	font-size:12px;
+	text-align:center;
+}
+
+.online_friends .individual .ind_act_time{
+	color:#ffffff;
+	font-size:12px;
+	text-align:center;
+}
+.individual:hover{
+	background-color: #009688;
+}
+.online_friends .individual .ind_name{
+	float:none;
+}
+
+.online_friends .individual img{
+	float:left;
+	border-top-left-radius:18px;
+	border-bottom-left-radius:18px;
+	border-bottom-right-radius:3px;
+	border-top-right-radius:3px;
+	margin-right:8px;
+	width:22%;
+}
+.ind_texts{
+	float:left;
+}
+.ind_msg{
+	color: white;
+	font-size: 25px;
+	text-align: right;
+	margin: 10px;
+}
+
+#hover_scroll_y:hover{
+	overflow-y:scroll;
+	scrollbar-width: none;
+
+}
+
+.no_friend{
+	font-weight:600;
+	text-align:center;
+	text-transform:uppercase;
+	color:#e74c3c;
+	font-size:18.8px;
+	padding-top:250px;
+}
+
+

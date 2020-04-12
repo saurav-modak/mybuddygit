@@ -29,7 +29,7 @@ if(isset($_POST['login_button'])){
 
         if(mysqli_num_rows($ifexist_q)){
             //update last_login time 
-            $upate_status_query = mysqli_query($con,"UPDATE login_status SET last_login=CURTIME() WHERE userid='$userid[0]'");
+            $upate_status_query = mysqli_query($con,"UPDATE login_status SET last_login=CURTIME(), logged_out='no' WHERE userid='$userid[0]'");
         }
 //############################################################################################################
 

@@ -11,7 +11,6 @@
             $this -> con = $con;
             $user_details_query=mysqli_query($con,"SELECT * FROM users WHERE username='$user'");
             $this-> user=mysqli_fetch_array($user_details_query); 
-            
         }
 /**
 * ! This is dumb >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -147,7 +146,59 @@
             return mysqli_num_rows($query);
         }
 
+        public function online_users(){
+            $time_obj = new Time();
+            $css="";
+            $count=0;
+            $active_friends ="";
+            $active_users_query=mysqli_query($this->con,"SELECT * FROM login_status WHERE logged_out='no' ORDER BY last_login DESC");
         
+            while($row=mysqli_fetch_array($active_users_query)){
+
+                $log_time = $time_obj->timeframe($row['last_login']);
+                $act_time = $time_obj->timeframe($row['last_activity']);
+                //return $row[1];
+                $user_info=mysqli_fetch_array(mysqli_query($this->con,"SELECT * FROM users WHERE id='$row[1]'"));
+                
+                if($this->user['username'] == $user_info['username'])
+                    continue; //Skipping logged in user
+                
+                
+                $count++;
+                if($count>0) //if more than 7 results found it adds following id
+                    $css="id='hover_scroll_y'"; //this id activates hover scroll css
+                    
+                    
+                $active_friends .= "
+                    <div class='individual'>
+                        <a href='".$user_info['username']."'>
+                        <img src='".$user_info['profile_pic']."'>
+                        <div class='ind_texts'>
+                            <div class='ind_name'>
+                                ".$user_info['first_name']." ".$user_info['last_name']."
+                                </div>
+                            <div class='ind_log_time'>
+                                Login: ".$log_time."
+                            </div>
+                            <div class='ind_act_time'>
+                                Active: ".$act_time."
+                            </div>
+                        </div>
+                        </a>
+                        <a href='messages.php?u=".$user_info['username']."'>
+                            <div class='ind_msg'>
+                                <i class='fas fa-envelope'></i>
+                            </div>
+                        </a>
+                    </div>";
+            }
+            if($count>0){
+                return  "<div class='online_friends'".$css."'>".$active_friends."</div>";
+            }else{
+                return "<div class='online_friends no_friend'>No One Is Online </div>";
+            }
+        
+        }
     }
     
 ?>

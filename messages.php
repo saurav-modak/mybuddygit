@@ -21,7 +21,7 @@ if(isset($_POST['post_message'])){
 }
 
 ?>
-<div class="user_details">
+<div class="user_details_wrap">
     <div class="user_details column">
             <a href="<?php echo $userLoggedIn ?>"><img src="<?php echo $user['profile_pic']; ?>"></a>
             <div class="user_details_left_right">
@@ -35,7 +35,7 @@ if(isset($_POST['post_message'])){
                 ?>
             </div>
     </div>
-    <div class="user_details column" id="conversations">
+    <div class="conver column" id="conversations">
                         <h4>Conversations</h4>
                         <div class="load_conversations">
                             <?php echo $message_obj -> getConvos() ?>
