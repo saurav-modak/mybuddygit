@@ -28,6 +28,8 @@
             ?>
         </div>
     </div>
+
+
     <div class="main_column column" tabindex="0">
         <form class="post_form" action="index.php" method="POST" enctype="multipart/form-data">
             

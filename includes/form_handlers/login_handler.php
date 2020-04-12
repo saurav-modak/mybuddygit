@@ -18,6 +18,21 @@ if(isset($_POST['login_button'])){
         }
 
         $_SESSION['username']=$username;//stores username in season variable to idenify logged in user
+
+//########################################## Online users login time ########################################
+
+
+
+        //  se if user has previous login data saved in login_status table
+        $userid=mysqli_fetch_array(mysqli_query($con,"SELECT id FROM users WHERE username='$username'"));
+        $ifexist_q=mysqli_query($con,"SELECT * FROM login_status WHERE userid='$userid[0]'");
+
+        if(mysqli_num_rows($ifexist_q)){
+            //update last_login time 
+            $upate_status_query = mysqli_query($con,"UPDATE login_status SET last_login=CURTIME() WHERE userid='$userid[0]'");
+        }
+//############################################################################################################
+
         header("location:index.php");//redirect user to the index page
         exit();
     }else{

@@ -5,9 +5,6 @@ include("includes/classes/Notification.php");
 include("includes/classes/Post.php");
 include("includes/classes/Message.php");
 
-
-
-
 if(isset($_SESSION['username'])){
     $userLoggedIn=$_SESSION['username'];
     $user_details_query=mysqli_query($con,"SELECT *  FROM users WHERE username='$userLoggedIn'");
@@ -15,6 +12,10 @@ if(isset($_SESSION['username'])){
 }else{
     header("location: register.php");
 }
+
+include("includes/set_online_status.php");
+
+
 ?>
 
 <html>
@@ -25,9 +26,10 @@ if(isset($_SESSION['username'])){
         <!--
         Hotfix jaquery with older version bacuse of internet connection lost.
         Please change this to letest version as soon as possible. if you are reading this comment in future.
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+         <script src="assets/js/jquery-3.5.0.min.js"></script>
         -->
-        <script src="assets/js/jquery-2.2.3.min.js"></script>
+       
+        <script src="assets/js/jquery-3.4.1.min.js"></script>
         <script src="assets/js/bootstrap.js"></script>
         <script src="assets/js/bootbox.all.min.js"></script>
         <script src="assets/js/hibuddy.js"></script>
