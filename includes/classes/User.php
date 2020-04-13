@@ -165,7 +165,7 @@
                 
                 
                 $count++;
-                if($count>0) //if more than 7 results found it adds following id
+                if($count>6) //if more than 7 results found it adds following id
                     $css="id='hover_scroll_y'"; //this id activates hover scroll css
                     
                     
@@ -197,6 +197,7 @@
             }else{
                 return "<div class='online_friends no_friend'>No One Is Online </div>";
             }
+            
         
         }
     }

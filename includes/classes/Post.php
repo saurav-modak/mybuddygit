@@ -317,7 +317,7 @@ class Post {
                         $imageDiv=NULL;
                     }
 
-                    $str .="<div class='status_post' onClick='javascript:toggle$id()'>
+                    $str .="<div class='status_post main-column column' onClick='javascript:toggle$id()'>
                                 <div class='post_profile_pic'>
                                     <img src='$profile_pic' width='50'>
                                 </div>
@@ -339,9 +339,9 @@ class Post {
                             </div>
                                 <div class='post_comment' id='toggleComment$id' style='display:none;'>
                                     <iframe src='comment_frame.php?post_id=$id' class='comment_iframe' id='comment_iframe$id' frameborder='0'></iframe>
-                                </div>
-                            <hr>
-                        ";/* post id to loead posts are sent through this line as a GET request
+                                </div>";
+                            /*<hr>
+                         post id to loead posts are sent through this line as a GET request
                             //!<iframe src='comment_frame.php?post_id=$id>
                             to load comments against the post id */
 

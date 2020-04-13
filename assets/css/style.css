@@ -224,9 +224,10 @@ textarea:focus{
 }
 
 .status_post{
-	width: 96%;
+	margin-top:10px;
+	/*width: 96%;*/
 	font-size: 15px;
-	padding: 0px 5px;
+	/*padding: 0px 5px;*/
 	min-height: 75px;
 }
 .post_profile_pic{
@@ -281,6 +282,20 @@ textarea:focus{
 	display: inline;
 	font-size: 15px;
 }
+
+.post_comment{
+	margin-top: -10px;
+}
+
+#posts_area .comment_iframe{
+	border-bottom-left-radius:16px;
+	border-bottom-right-radius:16px;
+	min-height:initial !important;
+	max-height:500px;
+}
+
+
+
 
 
 /*not learned */
@@ -940,6 +955,11 @@ p#sectuser{
 	color:#e74c3c;
 	font-size:18.8px;
 	padding-top:250px;
+}
+
+.online_friends_frame .header{
+	border-top-left-radius:4px;
+	border-top-right-radius:4px;
 }
 
 

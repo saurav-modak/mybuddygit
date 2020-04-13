@@ -33,6 +33,7 @@
     </div>
 
     <div class="main_column column" tabindex="0">
+
         <form class="post_form" action="index.php" method="POST" enctype="multipart/form-data">
             
             <textarea name="post_text" id="post_text" placeholder="Whats new?"></textarea>
@@ -48,7 +49,10 @@
             $post = new Post($con,$userLoggedIn);
             $post -> loadPostsFriends($req,15); */
         ?>
+    </div>
 
+
+    <div class="post-column main_column" tabindex="0">
         <div class="posts_area" id="posts_area"></div>
         <img class="loading" id="loading" alt="Loading" src="assets/images/icons/ajax-loader.gif">
     </div>
