@@ -492,6 +492,8 @@ textarea:focus{
 #post_body iframe{
     /*margin: 5px auto;*/
 	display:block;
+    clear: both;
+    margin: auto;
 }
 
 .search{
