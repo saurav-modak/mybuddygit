@@ -27,7 +27,7 @@ if(isset($_FILES['image']['name'])){
 		$ImageType = @explode('/', $_FILES['image']['type']);
 		$type = $ImageType[1]; //file type	
 	//Set Upload directory    
-		$uploaddir = $_SERVER['DOCUMENT_ROOT'].'/mybuddy2/assets/images/profile_pics';
+		$uploaddir = $_SERVER['DOCUMENT_ROOT'].'/mybuddygit/assets/images/profile_pics';
 	//Set File name	
 		$file_temp_name = $profile_id.'_original.'.md5(time()).'n'.$type; //the temp file name
 		$fullpath = $uploaddir."/".$file_temp_name; // the temp file path
@@ -156,12 +156,17 @@ if (isset($_POST['x'])){
 	<div id="formExample">
 		
 	    <p><b> <?=$msg?> </b></p>
-	    
+		<img src="<?php echo $user['profile_pic']; ?>">
+		
 	    <form action="upload.php" method="post"  enctype="multipart/form-data">
-	        Upload something<br /><br />
-	        <input type="file" id="image" name="image" style="width:200px; height:30px; " /><br /><br />
-	        <input type="submit" value="Submit" style="width:85px; height:25px;" />
-	    </form><br /><br />
+	        Upload Another Profile Picture<br /><br />
+	        <input type="file" id="image" name="image" style="width:200px; height:30px; " />
+			<input type="submit" value="Change" style="width:100px; height:35px; float:right" /><br><br>
+			<span style="color:red;"><b>Note:</b> Max File size: 2MB due to limited server space! This limitation will be fixed soon.</span>
+		</form>
+		<br />
+		<div class="cancel_button"><a href="index.php"> <button>Cancel</button></a></div>
+		<br />
 	    
 	</div> <!-- Form-->  
 

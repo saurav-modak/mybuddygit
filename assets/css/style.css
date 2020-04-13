@@ -970,4 +970,61 @@ p#sectuser{
 	border-top-right-radius:4px;
 }
 
+/* Profile Picture Upload Page */
+#formExample img{
+	float:left;
+	clear:none;
+	margin-right:10px;
+	margin-top:10px;
+	margin-left:20px;
+	margin-bottom:20px;
+}
+
+#formExample form{
+	float:left;
+	padding-left:0px;
+	margin-left:31px;
+	margin-top:10px;
+	margin-bottom:10px;
+	height:160px;
+	width:511px;
+}
+.cancel_button{
+	clear: left;
+    text-align: center;
+}
+.cancel_button button{
+	min-width:0px;
+	width:205px;
+	height:64px;
+	border-bottom-left-radius:20px;
+	border-top-right-radius:20px;
+	border-bottom-right-radius:20px;
+	border-top-left-radius:20px;
+	font-weight:700;
+	box-shadow:7px 2px 24px -1px #bf1c06 inset;
+	background-size:cover;
+	background-position:0% 0%;
+	font-size:31.7px;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#ffffff;
+	background-color:#b42b21 !important;
+	text-shadow:rgba(0, 0, 0, 0.3) 0px 1px 1px;
+}
+.cancel_button button:hover{
+	background-color:#ff3d23 !important;
+}
+#formExample img{
+	width:150px;
+	height:150px;
+}
+
+
+
+
+
+
+
+
+
 
