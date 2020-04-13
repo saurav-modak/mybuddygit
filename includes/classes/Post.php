@@ -42,7 +42,7 @@ class Post {
 				if (strpos($value, "www.youtube.com/watch?v=") !== false){
 					$link = preg_split("!&!", $value);
 					$value = preg_replace("!watch\?v=!", "embed/" , $link[0]);
-					$value = "<br><iframe width=\'880\' height=\'450px\' src=\'" . $value . "\' allowfullscreen></iframe><br>";
+					$value = "<br><iframe width=\'90%\' height=\'450px\' src=\'" . $value . "\' allowfullscreen></iframe><br>";
 					$body_array[$key] = $value;
 				} elseif (strpos($value, "youtu.be/") !== false) {
 					$link = preg_split("!\.be/!", $value);

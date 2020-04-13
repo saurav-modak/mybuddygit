@@ -49,7 +49,7 @@ include("includes/set_online_status.php");
     <div class="top_bar">
 
         <div class="logo">
-            <a href="index.php">HyBuddy</a>
+            <a href="index.php">MyBuddy</a>
         </div>
 
         <div class="search" id="search">
