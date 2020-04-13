@@ -39,9 +39,10 @@
             <textarea name="post_text" id="post_text" placeholder="Whats new?"></textarea>
             <input type="file" name="fileToUpload" id="fileToUpload">
             <input type="submit" name="post" id="post_button" value="Post">
+            <span><b>Note:</b> Max File size: 2MB due to limited server space! This limitation will be fixed soon.</span>
 
         </form>
-        <hr>
+      
         <?php /*
             $req = array( "page" => "1",
                 "userLoggedIn" => "saurav_modak");

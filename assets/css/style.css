@@ -293,6 +293,14 @@ textarea:focus{
 	min-height:initial !important;
 	max-height:500px;
 }
+.post_form span{
+	float:left;
+	clear:both;
+	color:#f61212;
+	margin-left:10px;
+}
+
+
 
 
 
