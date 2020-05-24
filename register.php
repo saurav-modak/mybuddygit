@@ -2,6 +2,7 @@
 require 'config/config.php';
 require 'includes/form_handlers/register_handler.php';
 require 'includes/form_handlers/login_handler.php';
+require 'includes/form_handlers/resetpass.php';
 ?>
 
 
@@ -44,7 +45,6 @@ require 'includes/form_handlers/login_handler.php';
             $(document).ready(function(){
                 $("#first").hide();
                 $("#second").show();
-
             });
             </script>
             ';}
@@ -60,6 +60,44 @@ require 'includes/form_handlers/login_handler.php';
             });
             </script>
         ';}
+
+        //opens the login form if user succesfully registared
+        if (isset($_POST['sendcode'])) {
+            echo '
+            <script>
+            $(document).ready(function(){
+                $("#first").hide();
+                $("#second").hide();
+                $("#third").show();
+
+            });
+            </script>
+        ';}
+        if (isset($_POST['veryfy_code'])) {
+            echo '
+            <script>
+            $(document).ready(function(){
+                $("#first").hide();
+                $("#second").hide();
+                $("#third").show();
+
+            });
+            </script>
+        ';}
+        if(isset($_SESSION['passchanged'])){
+            if($_SESSION['passchanged']="yes"){
+            echo '
+                <script>
+                $(document).ready(function(){
+                    $("#first").show();
+                    $("#second").hide();
+                    $("#third").hide();
+
+                });
+                </script>
+            ';
+            }
+        }
 	?>
 
     <div class="wrapper">
@@ -76,6 +114,11 @@ require 'includes/form_handlers/login_handler.php';
                 <form action="register.php" method="POST">
                 
                     <?php //Shows registration successufull
+                        if(isset($_SESSION['passchanged'])){
+                            if($_SESSION['passchanged']="yes"){
+                            echo "<span style='color:#14c800'>Password changed! Goahead and login!</span><br><br>";
+                           }
+                        }
                         if(in_array("<span style='color:#14c800'>You're all set! Goahead and login!</span><br>",$error_array)) {
                         echo "<span style='color:#14c800'>You're all set! Goahead and login!</span><br>"; 
                     }?>
@@ -89,7 +132,9 @@ require 'includes/form_handlers/login_handler.php';
                         echo "Email or password was incorrect<br>";
                         }?>
                     <br>
-					<a href="#" id="signup" class="signup">Need an account? Register here!</a>
+					<a href="#" id="signup" class="signup">Need an account? Register here!</a><br>
+                    
+                    <a href="#" id="forgotpass" class="forgotpass">Reset Password</a>
 					<br>
                 </form>
             </div>
@@ -207,6 +252,51 @@ require 'includes/form_handlers/login_handler.php';
                     ?>
                 </form>
             </div>
+            
+            <!-----------------------Third: Forgot Password -------------------------------->
+            <div id="third">
+            <br>
+
+            <?php
+               //echo var_dump($_SESSION);
+                if(!isset($_SESSION['codesent'])){
+                    echo'<form action="register.php" method="POST">
+                        <input type="email" name="log_email" placeholder="Email Address" value="';
+                        if(isset($_SESSION['log_email'])) echo $_SESSION['log_email'];
+                    echo'"required><br>
+
+                    <input type="submit" name="sendcode" value="Send Code"><br>';
+
+                    if(in_array("Email id not found<br>",$error_array)){
+                            echo "Email id not found<br>";
+                        }
+                    echo'
+                        <a href="#" id="rememberpass" class="rememberpass">Remeber password? Login here!</a>
+                        <br> 
+                    </form>';
+
+                    }
+                    elseif ($_SESSION['codesent']=="yes")
+                    {
+                        echo'
+                        <form action="register.php" method="POST">
+                            <p>An OTP has been sent to your email!</p>
+                            <input type="email" name="log_email" placeholder="Email Address" value="';
+                                if(isset($_SESSION["log_email"])) echo $_SESSION["log_email"];
+                            echo'" required><br>
+
+                            <input type="password" name="new_password" placeholder="New Password"><br>
+                            <input type="text" name="key" placeholder="Enter OTP" value=""><br>
+                            <input type="submit" name="veryfy_code" value="Veryfy Code"><br>
+
+                            <br> 
+                        </form>';
+                    }
+                
+                ?>    
+            </div>
+            
+            
         </div>
     </div>
 <?php

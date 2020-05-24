@@ -116,7 +116,7 @@ if(isset($_POST['register_button'])){//chnecks if register_button was clicked
         
         //echo "$fname $lname $em $password $username2 $i";
 
-        $query=mysqli_query($con,"INSERT INTO users VALUES(NULL,'{$fname}','{$lname}','{$username2}','{$em}','{$password}','{$date}','{$profile_pic}','0','0','no',',')");
+        $query=mysqli_query($con,"INSERT INTO users VALUES(NULL,'{$fname}','{$lname}','{$username2}','{$em}','{$password}','{$date}','{$profile_pic}','0','0','no',',','0','none')");
         
         array_push($error_array,"<span style='color:#14c800'>You're all set! Goahead and login!</span><br>");
 

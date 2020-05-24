@@ -106,13 +106,16 @@ input[type="text"],input[type="email"],input[type="password"]{
 	font-size: 100%
 }
 
+#forgotpass{
+	color:#f74040;;
+}
 
 #second{
 	display: none;
 
 }
-
-#first{
-
+#third{
+	display: none;
 
 }
+

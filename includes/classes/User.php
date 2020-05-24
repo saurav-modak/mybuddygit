@@ -146,6 +146,7 @@
             return mysqli_num_rows($query);
         }
 
+        
         public function online_users(){
             $time_obj = new Time();
             $css="";
