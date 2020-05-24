@@ -5,7 +5,6 @@ require 'includes/form_handlers/login_handler.php';
 require 'includes/form_handlers/resetpass.php';
 ?>
 
-
 <html>
 <head>
 <title>Welcome to my buddy</title>

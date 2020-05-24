@@ -58,6 +58,7 @@ if(isset($_POST['post_message'])){
             }
 
         ?>
+        
 
         <div class="message_post">
             <form action="" method="POST">
@@ -81,8 +82,41 @@ if(isset($_POST['post_message'])){
 </div>
 
        <script>
+            var userLoggedIn= '<?php echo $userLoggedIn; ?>';
+            var user_to= '<?php echo $user_to; ?>';
+            var audio = new Audio('msg.mp3');
+            
             $('.load_messages').scrollTop($('.load_messages')[0].scrollHeight);
-            //alert("This page is under construction");
+
+                window.setInterval(function(){
+                        console.log("Checking for messages!");
+                        $.ajax({
+                            url:"includes/handlers/load_live_messages.php",
+                            type: "POST",
+                            data: "user_to="+user_to+"&userLoggedIn="+userLoggedIn,
+                            cache: false,
+
+                            success: function(data){
+                                if($.trim(data)){
+                                    audio.play();
+                                    console.log("New Msg");
+                                    $('.load_messages').append(data);
+                                    $('.load_messages').scrollTop($('.load_messages')[0].scrollHeight);
+                                    
+                                }
+
+                            }
+
+                        })
+                    
+                }, 1000);//every 2seconds ajax sending new req
+                
+            
+            
+            
+
+            
+            
         </script>
 
         

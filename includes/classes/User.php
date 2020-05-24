@@ -161,7 +161,7 @@
                 //return $row[1];
                 $user_info=mysqli_fetch_array(mysqli_query($this->con,"SELECT * FROM users WHERE id='$row[1]'"));
                 
-                if($this->user['username'] == $user_info['username'])
+                if(($this->user['username'] == $user_info['username'])||$row[1]=='r')
                     continue; //Skipping logged in user
                 
                 
