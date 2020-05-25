@@ -32,7 +32,7 @@ if($query != NULL){
                 </div>
                 <div class='liveSearchText'>
                     ".$row['first_name']." ".$row['last_name']."
-                    <p>".$row['username']."</p>
+                    <p id='username'>".$row['username']."</p>
                     <p id='grey'>".$mutual_friends."</p>
                 </div>
             </a>

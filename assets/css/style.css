@@ -699,8 +699,14 @@ p#sectuser{
 }
 
 .search_results a .liveSearchText{
-	width:80%;
 	float:none;
+}
+.liveSearchText p #username{
+	font-size: 1vw;
+}
+.liveSearchText p #gray{
+		color: #000000;
+		max-width: 20px;
 }
 
 .search_results .resultDisplay{
@@ -730,6 +736,8 @@ p#sectuser{
 .search_results{
 	background-color:#ffffff !important;
 	margin-top:36px;
+	overflow-y: scroll;
+    max-height: 500px;
 }
 
 /* New message live search */
