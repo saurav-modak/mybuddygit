@@ -2,11 +2,14 @@
 
 class Post {
     private $user_obj;
+    private $time_obj;
     private $con;
 
     public function __construct($con, $user){
         $this->con = $con;
         $this->user_obj = new User($con, $user);//calling User.php class for use info
+        require_once("Time.php");//not working without this even though i have included Time.php in header file
+        $this->time_obj = new Time();
         
     }
     
@@ -234,20 +237,23 @@ class Post {
                     $comments_check = mysqli_query($this->con ,"SELECT *  FROM comments WHERE post_id='$id'");
                     $comments_check_num = mysqli_num_rows($comments_check);
 
+                    
+                    $time_message = $this->time_obj -> timeframe($date_time);
+            /*
                     //Timeframe
                     $date_time_now = date("Y-m-d H:i:s");
                     $start_date= new DateTime($date_time);//Time of post
                     /*
                         TODO: DateTime is a class comes with php
                         ! Learn about it */
-                    $end_date= new DateTime($date_time_now); //Current time
+                /*    $end_date= new DateTime($date_time_now); //Current time
 
                     $interval = $start_date->diff($end_date);
                     /*
                         TODO: diff is a class comes with php
                         ! Learn about it */
                     //time msg
-                    if($interval->y>=1){
+                /*    if($interval->y>=1){
                         if($interval==1)
                             $time_message=$interval->y." Year ago";//1 year ago
                         else
@@ -308,14 +314,16 @@ class Post {
                             $time_message=$interval->s." Seconds ago";
                         }
                     }
-
+            */
                     if($imagePath != NULL){
                         $imageDiv ="<div class='postedImage'>
                                         <img src='$imagePath'><br>
                                     </div>";
                     }else{
                         $imageDiv=NULL;
-                    }
+                    } 
+                    
+            
 
                     $str .="<div class='status_post main-column column' onClick='javascript:toggle$id()'>
                                 <div class='post_profile_pic'>
@@ -323,7 +331,7 @@ class Post {
                                 </div>
                                 <div class='posted_by' style='color:#ACACAC;'>
                                     <a href='$added_by'>$first_name $last_name </a>
-                                    $user_to &nbsp;&nbsp;&nbsp;&nbsp;$time_message
+                                    $user_to &nbsp;&nbsp;&nbsp;&nbsp;<a href='post.php?id=$id'>$time_message</a>
                                     $delete_button
                                 </div>
                                 <div id='post_body'>
@@ -415,19 +423,22 @@ class Post {
                         $last_name =$user_row['last_name'];
                         $profile_pic =$user_row['profile_pic'];
         
+                    
+                        $time_message = $this->time_obj -> timeframe($date_time);
+                /*
                         $date_time_now = date("Y-m-d H:i:s");
                         $start_date= new DateTime($date_time);//Time of post
                         /*
                             TODO: DateTime is a class comes with php
                             ! Learn about it */
-                        $end_date= new DateTime($date_time_now); //Current time
+                    /*    $end_date= new DateTime($date_time_now); //Current time
         
                         $interval = $start_date->diff($end_date);
                         /*
                             TODO: diff is a class comes with php
                             ! Learn about it */
                         //time msg
-                        if($interval->y>=1){
+                    /*    if($interval->y>=1){
                             if($interval==1)
                                 $time_message=$interval->y." Year ago";//1 year ago
                             else
@@ -488,6 +499,7 @@ class Post {
                                 $time_message=$interval->s." Seconds ago";
                             }
                         }
+                */
         
                         $response .="<div class='status_post'>
                                         <div class='post_profile_pic'>
@@ -495,7 +507,7 @@ class Post {
                                         </div>
                                         <div class='posted_by' style='color:#ACACAC;'>
                                             <a href='$added_by'>$first_name $last_name </a>
-                                            $user_to &nbsp;&nbsp;&nbsp;&nbsp;$time_message
+                                            $user_to &nbsp;&nbsp;&nbsp;&nbsp;<a href='post.php?id=$id'>$time_message</a>
                                         </div>
                                         <div id='post_body'>
                                             $body
@@ -551,6 +563,7 @@ class Post {
                 $body=$row['body'];
                 $added_by=$row['added_by'];
                 $date_time=$row['date_added'];
+                $imagePath= $row['image'];
 
                 // !Check if user who posted, has theri account closed ***controvasal***
                 $added_by_obj = new User($this->con, $added_by);
@@ -611,79 +624,89 @@ class Post {
                 $comments_check = mysqli_query($this->con ,"SELECT *  FROM comments WHERE post_id='$id'");
                 $comments_check_num = mysqli_num_rows($comments_check);
 
-                //Timeframe
-                $date_time_now = date("Y-m-d H:i:s");
-                $start_date= new DateTime($date_time);//Time of post
+                $time_message = $this->time_obj -> timeframe($date_time);
                 /*
-                    TODO: DateTime is a class comes with php
-                    ! Learn about it */
-                $end_date= new DateTime($date_time_now); //Current time
+                        //Timeframe
+                        $date_time_now = date("Y-m-d H:i:s");
+                        $start_date= new DateTime($date_time);//Time of post
+                        /*
+                            TODO: DateTime is a class comes with php
+                            ! Learn about it */
+                    /*    $end_date= new DateTime($date_time_now); //Current time
 
-                $interval = $start_date->diff($end_date);
-                /*
-                    TODO: diff is a class comes with php
-                    ! Learn about it */
-                //time msg
-                if($interval->y>=1){
-                    if($interval==1)
-                        $time_message=$interval->y." Year ago";//1 year ago
-                    else
-                        $time_message=$interval->y." Years ago";//1+ year ago
-                }
+                        $interval = $start_date->diff($end_date);
+                        /*
+                            TODO: diff is a class comes with php
+                            ! Learn about it */
+                        //time msg
+                    /*    if($interval->y>=1){
+                            if($interval==1)
+                                $time_message=$interval->y." Year ago";//1 year ago
+                            else
+                                $time_message=$interval->y." Years ago";//1+ year ago
+                        }
 
-                else if($interval->m >= 1){
-                    if($interval->d==0){
-                        $days=" ago";
-                    }
-                    else if($interval -> d ==1){
-                        $days=$interval->d." Day ago";
-                    }
-                    else{
-                        $days=$interval->d." Days ago";
-                    }
+                        else if($interval->m >= 1){
+                            if($interval->d==0){
+                                $days=" ago";
+                            }
+                            else if($interval -> d ==1){
+                                $days=$interval->d." Day ago";
+                            }
+                            else{
+                                $days=$interval->d." Days ago";
+                            }
 
-                    if($interval->m==1){
-                        $time_message=$interval->m." Moth".$days;
-                    }
-                    else{
-                        $time_message=$interval->m." Moths".$days; 
-                    }
-                }
+                            if($interval->m==1){
+                                $time_message=$interval->m." Moth".$days;
+                            }
+                            else{
+                                $time_message=$interval->m." Moths".$days; 
+                            }
+                        }
 
-                else if($interval->d>=1){
-                    if($interval -> d ==1){
-                        $time_message="Yesterday";
-                    }
-                    else{
-                        $time_message=$interval->d." Days ago";
-                    }
-                }
+                        else if($interval->d>=1){
+                            if($interval -> d ==1){
+                                $time_message="Yesterday";
+                            }
+                            else{
+                                $time_message=$interval->d." Days ago";
+                            }
+                        }
 
-                else if($interval->h>=1){
-                    if($interval->h==1){
-                        $time_message=$interval->h." Hour ago";
-                    }
-                    else{
-                        $time_message=$interval->h." Hours ago";
-                    }
-                }
+                        else if($interval->h>=1){
+                            if($interval->h==1){
+                                $time_message=$interval->h." Hour ago";
+                            }
+                            else{
+                                $time_message=$interval->h." Hours ago";
+                            }
+                        }
 
-                else if($interval->i>=1){
-                    if($interval->i==1){
-                        $time_message=$interval->i." Minute ago";
-                    }
-                    else{
-                        $time_message=$interval->i." Minutes ago";
-                    }
-                }
+                        else if($interval->i>=1){
+                            if($interval->i==1){
+                                $time_message=$interval->i." Minute ago";
+                            }
+                            else{
+                                $time_message=$interval->i." Minutes ago";
+                            }
+                        }
 
-                else{
-                    if($interval->s<30){
-                        $time_message=" Just now";
-                    }
-                    else{
-                        $time_message=$interval->s." Seconds ago";
-                    }
+                        else{
+                            if($interval->s<30){
+                                $time_message=" Just now";
+                            }
+                            else{
+                                $time_message=$interval->s." Seconds ago";
+                            }
+                        }
+                    */
+                if($imagePath != NULL){
+                    $imageDiv ="<div class='postedImage'>
+                                    <img src='$imagePath'><br>
+                                </div>";
+                }else{
+                    $imageDiv=NULL;
                 }
 
                 $str .="<div class='status_post' onClick='javascript:toggle$id()'>
@@ -692,12 +715,13 @@ class Post {
                             </div>
                             <div class='posted_by' style='color:#ACACAC;'>
                                 <a href='$added_by'>$first_name $last_name </a>
-                                &nbsp;&nbsp;&nbsp;&nbsp;$time_message
+                                &nbsp;&nbsp;&nbsp;&nbsp;<a href='post.php?id=$id'>$time_message</a>
                                 $delete_button
                             </div>
                             <div id='post_body'>
                                 $body      
                                 <br>
+                                $imageDiv
                             </div>
                             <div class='newsfeedPostOptions'>
                                 Comments( $comments_check_num )&nbsp&nbsp&nbsp&nbsp
@@ -743,6 +767,150 @@ class Post {
 
     }
     
+    public function getSinglePost($id){
+ 
+        $userLoggedIn = $this -> user_obj->getUsername();
+
+
+
+        $str ="";//string to return
+
+        $data_query = mysqli_query($this->con,"SELECT * FROM posts  WHERE id=$id AND deleted='no' ORDER BY id DESC");//Very inefficient because currently it is loading all posts at once
+    
+
+        if(mysqli_num_rows($data_query) > 0){
+
+            
+            while($row=mysqli_fetch_array($data_query)){
+                $id=$row['id'];
+                $body=$row['body'];
+                $added_by=$row['added_by'];
+                $date_time=$row['date_added'];
+                $imagePath= $row['image'];
+
+                //Prepare user_to string so it can be included even if not posted to a user
+                if($row['user_to']=="none"){
+                    $user_to = "";
+                }
+                else{
+                    $user_to_obj = new User($this->con,$row['user_to']);//creating User object for your friend who posted it
+                    $user_to_name = $user_to_obj -> getFirstAndLastName();
+                    $user_to = "To <a href='".$user_to_obj -> getUsername()."'>". $user_to_name ."</a>";
+                }
+
+                if($row['user_to']!="none" AND $user_to_obj->isClosed()){
+                    continue;
+                }
+
+                //Check if user who posted, has theri account closed
+                $added_by_obj = new User($this->con, $added_by);
+                if($added_by_obj -> isClosed()){//isClosed User.php function returns true or false
+                    continue; //if friend account is closed this itteration of while loop is skiped
+                }
+
+                $user_logged_obj = new User($this->con,$userLoggedIn);
+               
+
+                    if($userLoggedIn==$added_by)
+                        $delete_button = "<button class='delete_button btn-danger' id='post$id'><div class='delete_text'>X</div></button>";
+                    else
+                        $delete_button ="";
+
+                    $user_details_query = mysqli_query($this->con,"SELECT first_name, last_name, profile_pic FROM users WHERE username='$added_by'");
+                    $user_row =mysqli_fetch_array($user_details_query); 
+                    $first_name =$user_row['first_name'];
+                    $last_name =$user_row['last_name'];
+                    $profile_pic =$user_row['profile_pic'];
+
+
+                    /*
+                    ! this part is for comments, it gives evey post a id to click
+                    TODO: maybe i can make this function take post id as a parameter instead of making new function for every post.
+                    */
+                    ?>
+                    <script>
+                        function toggle<?php echo $id; ?>(){
+                            <?php //to prevent comments from loading when clicked on user name or picture ?>
+                            var target = $(event.target);
+                            if(!target.is("a")){ <?php //if target is not a hyperlink ?>
+                                var element = document.getElementById("toggleComment<?php echo $id; ?>")
+                                
+                                if(element.style.display == "block")
+                                    element.style.display = "none";
+                                else
+                                    element.style.display = "block";
+
+                                <?php //next two line set iframe height to its content height ?>    
+                                var iframe = document.getElementById('comment_iframe<?php echo $id; ?>');
+                                iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+    
+                            }
+                        }
+                    </script>
+                    <?php
+
+                    //Number of comments or total comments on given post id
+                    $comments_check = mysqli_query($this->con ,"SELECT *  FROM comments WHERE post_id='$id'");
+                    $comments_check_num = mysqli_num_rows($comments_check);
+
+                    
+                    $time_message = $this->time_obj -> timeframe($date_time);//getting time in words
+
+                    if($imagePath != NULL){
+                        $imageDiv ="<div class='postedImage'>
+                                        <img src='$imagePath'><br>
+                                    </div>";
+                    }else{
+                        $imageDiv=NULL;
+                    }
+
+                    $str .="<div class='status_post main-column column' onClick='javascript:toggle$id()'>
+                                <div class='post_profile_pic'>
+                                    <img src='$profile_pic' width='50'>
+                                </div>
+                                <div class='posted_by' style='color:#ACACAC;'>
+                                    <a href='$added_by'>$first_name $last_name </a>
+                                    $user_to &nbsp;&nbsp;&nbsp;&nbsp;<a href='post.php?id=$id'>$time_message</a>
+                                    $delete_button
+                                </div>
+                                <div id='post_body'>
+                                    $body      
+                                    <br>
+                                    $imageDiv
+                                    
+                                </div>
+                                <div class='newsfeedPostOptions'>
+                                    Comments( $comments_check_num )&nbsp&nbsp&nbsp&nbsp
+                                    <iframe src='like.php?post_id=$id' class='like_frame' scrolling='no'></iframe>
+                                </div>
+                            </div>
+                                <div class='post_comment' id='toggleComment$id' style='display:none;'>
+                                    <iframe src='comment_frame.php?post_id=$id' class='comment_iframe' id='comment_iframe$id' frameborder='0'></iframe>
+                                </div>";
+                            /*<hr>
+                         post id to loead posts are sent through this line as a GET request
+                            //!<iframe src='comment_frame.php?post_id=$id>
+                            to load comments against the post id */
+
+                
+                ?>
+                <script>
+                    $(document).ready(function(){
+                        $('#post<?php echo $id; ?>').on('click',function(){
+                            bootbox.confirm("Are you sure you want to delete this post",function(result){
+                                $.post("includes/handlers/delete_post.php?delete_post_id=<?php echo $id; ?>",{result:result});
+                                if(result)
+                                    location.reload();
+                            });
+                        })
+                    });
+                </script>
+                <?php
+            }
+
+        }
+        echo $str;
+    }
 
     
 }
