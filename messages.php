@@ -36,12 +36,15 @@ if(isset($_POST['post_message'])){
             </div>
     </div>
     <div class="conver column" id="conversations">
-                        <h4>Conversations</h4>
+                         
+                        <a href="messages.php?u=new">Send a New Message</a><br>
+                        <hr>
+                        
                         <div class="load_conversations">
                             <?php echo $message_obj -> getConvos() ?>
                         </div>
                         <br>
-                        <a href="messages.php?u=new">New Message</a>
+                        
     </div>
 </div>
 
@@ -49,7 +52,7 @@ if(isset($_POST['post_message'])){
         <?php
 
             if($user_to !="new"){
-                echo "<h4>You and <a href='$user_to'>".$user_to_obj->getFirstAndLastName()."</a><hr>";
+                echo "<h5>You and <a href='$user_to'>".$user_to_obj->getFirstAndLastName()."</a><hr></h5>";
                 echo "<div class='load_messages'>";
                     echo $message_obj -> getMessages($user_to);
                 echo "</div>";
@@ -112,7 +115,48 @@ if(isset($_POST['post_message'])){
                 }, 1000);//every 2seconds ajax sending new req
                 
             
-            
+            /*
+                //!           Tried makig the interval timer dynamic so that it slows down when user is not receving a msg for more than 5 seconds 
+                    var userLoggedIn= '<?php echo $userLoggedIn; ?>';
+                    var user_to= '<?php echo $user_to; ?>';
+                    var audio = new Audio('msg.mp3');
+                    var delay=1000;
+                    var counting=1;
+                    
+                    $('.load_messages').scrollTop($('.load_messages')[0].scrollHeight);
+
+                        window.setInterval(function(){
+                                console.log("Checking for messages!<br>Delay:"+delay+"<br>Counting:"+counting);
+                                $.ajax({
+                                    url:"includes/handlers/load_live_messages.php",
+                                    type: "POST",
+                                    data: "user_to="+user_to+"&userLoggedIn="+userLoggedIn,
+                                    cache: false,
+
+                                    success: function(data){
+                                        if($.trim(data)){
+                                            audio.play();
+                                            console.log("New Msg");
+                                            $('.load_messages').append(data);
+                                            $('.load_messages').scrollTop($('.load_messages')[0].scrollHeight);
+                                            counting=1;
+                                            delay=1000;
+
+                                        }else{
+                                            counting++;
+                                                if(counting>5){
+                                                delay=5000;
+                                            }
+                                        }
+                                            
+                                    }
+
+                                })
+                            
+                        }, delay);
+                        
+                    
+            */
             
 
             

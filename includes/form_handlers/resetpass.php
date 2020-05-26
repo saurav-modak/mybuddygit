@@ -18,7 +18,7 @@ if(isset($_POST['sendcode'])){
         $key = random_strings(8);
         $add_hash=mysqli_query($con,"UPDATE users SET req_recovery='1', rec_key='$key' where email='$email'");
         
-        require_once "includes\classes\sendmail.php";
+        require_once "includes/classes/sendmail.php";
         sendcode($key,$email);
         
 

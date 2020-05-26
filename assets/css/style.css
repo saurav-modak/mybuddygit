@@ -135,8 +135,18 @@ nav a:hover{
 }
 .conver{
 	float: left;
-    width: 300px;
+	width: 300px;
+	max-height: 650px;
+	overflow: hidden;
 }
+.conver:hover{
+	overflow-y: scroll;
+}
+.conver h5{
+	text-align: center;
+	color: #b9b6b6;
+}
+
 
 .user_details_wrap #conversations > a{
 	text-align:center;
@@ -156,6 +166,9 @@ nav a:hover{
 	z-index: -1;
     min-height:150px;
     margin-left: 10px;;
+}
+.main_column h5{
+	text-align: center;
 }
 
 
@@ -388,6 +401,14 @@ textarea:focus{
 	margin: 7px 0 0 7px;
 	position: relative;
 	
+}
+.friend_requests h4{
+	text-align: center;
+}
+.friend_requests{
+	max-height: 800px;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 
 #friend_req_list{

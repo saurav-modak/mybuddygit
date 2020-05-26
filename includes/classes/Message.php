@@ -62,8 +62,8 @@ class Message {
         //echo "user to is:".$otherUser."<br><br>";
 
         
-        $get_messages_query = mysqli_query($this -> con, "SELECT * FROM messages WHERE ((user_to='$userLoggedIn' AND user_from='$otherUser') OR (user_from='$userLoggedIn' AND user_to='$otherUser')) AND opened='no'");
-        $query = mysqli_query($this-> con,"UPDATE messages SET opened='yes',viewed='yes'  WHERE ((user_to='$userLoggedIn' AND user_from='$otherUser') OR (user_from='$userLoggedIn' AND user_to='$otherUser')) AND opened='no'");
+        $get_messages_query = mysqli_query($this -> con, "SELECT * FROM messages WHERE ((user_to='$userLoggedIn' AND user_from='$otherUser') AND opened='no')");
+        $query = mysqli_query($this-> con,"UPDATE messages SET opened='yes',viewed='yes'  WHERE ((user_to='$userLoggedIn' AND user_from='$otherUser') AND opened='no')");
     
         while($row=mysqli_fetch_array($get_messages_query)){
             $user_to = $row['user_to'];
