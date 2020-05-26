@@ -497,11 +497,13 @@ textarea:focus{
 
 .profile_main_column{
 	min-width: 675px;
+	min-height:98%;
 	float:left;
 	width:70%;
 	z-index: -1;
-    min-height:150px;
-    margin-left: 10px;
+	margin-left: 10px;
+
+	
 }
 
 .postedImage img{
@@ -782,6 +784,11 @@ p#sectuser{
 .results .resultDisplay{
 	 clear:left; 
 }
+
+.message_post{
+	clear: both;
+}
+
 .message_post input[type=text]{
 	 margin-bottom:34px;		
 	 width: 100%;
@@ -799,8 +806,18 @@ p#sectuser{
 	margin-top: 15px;
 	margin-left: 15px;
 	margin-right: 15px;
+	
 }
 
+.tab-content .load_messages{
+	height: 65%;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+.tab-content .load_messages::-webkit-scrollbar {
+	display: none;
+}
 /* Message droap down window */
 
 .user_found_messages{

@@ -103,7 +103,9 @@ if(isset($_POST['respond_request'])) {
 				
 				<?php
 				if($username!=$userLoggedIn){
-					echo '<a class="nav-item nav-link rounded-pill" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Messages</a>';
+					echo '<a class="nav-item nav-link rounded-pill" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"
+					onclick="scrollbottom();"
+					>Messages</a>';
 				}
 				?>
 			</div>
@@ -120,9 +122,9 @@ if(isset($_POST['respond_request'])) {
 			</div>
 
 			<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-				<!-- Loag Messages -->
+				<!-- Load Messages -->
 				<?php
-					echo "<h4>You and <a href='".$username."'>".$profile_user_obj->getFirstAndLastName()."</a><hr>";
+					echo "<h4>You and <a href='".$username."'>".$profile_user_obj->getFirstAndLastName()."</a></h4><hr>";
 					echo "<div class='load_messages'>";
 						$message_obj = new Message($con,$userLoggedIn);
 						echo $message_obj -> getMessages($username);
@@ -136,11 +138,6 @@ if(isset($_POST['respond_request'])) {
 					</form>
 
 				</div>
-
-				<script>
-				$('.load_messages').scrollTop($('.load_messages')[0].scrollHeight);
-				//alert("This page is under construction");
-				</script>
 			</div>
 		</div> 
 	</div>
@@ -183,6 +180,12 @@ uses hibuddy.js to submit the post
     </div>
 	
 	<script >
+		//SCROLL TO THE BOTTOM FOR MESSAGE TAB
+		function scrollbottom(){
+			setTimeout(function (){
+				$('.load_messages').scrollTop($('.load_messages')[0].scrollHeight);
+			}, 1000);//WAIT FOR 1 SECOND BEFORE SCROLLING
+		}
 		/* Ajax call and infinite crolling */
 		var userLoggedIn= '<?php echo $userLoggedIn; ?>';
 		var profileUsername='<?php echo $username; ?>'
