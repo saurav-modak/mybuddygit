@@ -99,7 +99,6 @@ if(isset($_POST['respond_request'])) {
 		<nav>
 			<div class="nav nav-tabs" id="nav-tab" role="tablist" style="font-size: 20px;">
 				<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">News Feed</a>
-				<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">About</a>
 				
 				<?php
 				if($username!=$userLoggedIn){
@@ -117,9 +116,7 @@ if(isset($_POST['respond_request'])) {
 					<img class="loading" id="loading" alt="Loading" src="assets/images/icons/ajax-loader.gif">
 			</div>
 
-			<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-				...
-			</div>
+			
 
 			<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
 				<!-- Load Messages -->
