@@ -48,7 +48,7 @@ if(isset($_POST['post_message'])){
     </div>
 </div>
 
-<div class="main_column column" id="main_column">
+<div class="main_column column" id="main_column_msg">
         <?php
 
             if($user_to !="new"){

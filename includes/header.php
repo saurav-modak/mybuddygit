@@ -29,7 +29,11 @@ include("includes/set_online_status.php");
         Please change this to letest version as soon as possible. if you are reading this comment in future.
          <script src="assets/js/jquery-3.5.0.min.js"></script>
         -->
-       
+        <!-- Favicon icon-->
+        
+        
+
+        <!--Include libraries-->
         <script src="assets/js/jquery-3.4.1.min.js"></script>
         <script src="assets/js/bootstrap.js"></script>
         <script src="assets/js/bootbox.all.min.js"></script>
@@ -63,7 +67,7 @@ include("includes/set_online_status.php");
             <div class="search_results_footer_empty"></div>
         </div>
 
-        <nav>
+        <nav class="navbar">
             <?php
                 //Unread messages
                 $messages = new Message($con, $userLoggedIn);

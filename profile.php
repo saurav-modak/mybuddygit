@@ -97,13 +97,13 @@ if(isset($_POST['respond_request'])) {
 	
 	 <div class="profile_main_column column left">
 		<nav>
-			<div class="nav nav-tabs navbar navbar-light bg-secondary rounded-pill" id="nav-tab" role="tablist">
-				<a class="nav-item nav-link active rounded-pill" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">News Feed</a>
-				<a class="nav-item nav-link rounded-pill" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">About</a>
+			<div class="nav nav-tabs" id="nav-tab" role="tablist" style="font-size: 20px;">
+				<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">News Feed</a>
+				<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">About</a>
 				
 				<?php
 				if($username!=$userLoggedIn){
-					echo '<a class="nav-item nav-link rounded-pill" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"
+					echo '<a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"
 					onclick="scrollbottom();"
 					>Messages</a>';
 				}

@@ -68,7 +68,7 @@ body {
 	text-shadow: #000 -2px 2px 0px;
 }
 
-.top_bar nav{
+.top_bar .navbar{
 	margin-bottom:auto;
 	margin-top:auto;
 	margin-right:0px;
@@ -81,7 +81,7 @@ nav{
 	position: absolute;
 	margin: 10px;
 }*/
-nav a{
+.navbar a{
 	position: relative;
 	color: #fff;
 	text-decoration: none;
@@ -92,7 +92,7 @@ nav a{
 	border-left-width: 2px;
 	border-left-color: #e67e22;
 }
-nav a:hover{
+.navbar a:hover{
 	color: #fff;
 	font-size: 21px;
 	text-decoration: none;
@@ -138,6 +138,7 @@ nav a:hover{
 	width: 300px;
 	max-height: 650px;
 	overflow: hidden;
+	min-height: 650px;
 }
 .conver:hover{
 	overflow-y: scroll;
@@ -554,14 +555,21 @@ textarea:focus{
 /*messages */
 
 
-#main_column .load_messages{
+#main_column_msg .load_messages{
 	overflow-y:scroll;
-	height: 70vh;
-	background-color: #e2e2e293;
+	height: 72vh;
+	background-color: hsla(208, 97%, 46%, 0.03);
 	min-height: 300px;
 	max-height: 720px;
-	margin-bottom: 10px;
+	padding: 10px;
+	margin-top: -16px;
+	margin-bottom: -10px;
+    box-shadow: inset 2px 3px 11px #777575;
 }
+.load_messages::-webkit-scrollbar-track {
+    display: none;
+}
+
 
 .message_post input[type=submit] {
     float: right;
@@ -706,7 +714,7 @@ p#sectuser{
 	font-size:22.7px;
 	text-align:left;
 }
-#main_column{ min-height:567px; }
+
 
 .search_results a img{
 	width:100px;
