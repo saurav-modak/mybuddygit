@@ -17,12 +17,12 @@ class Post {
         
         $body = strip_tags($body); //removes html tags 
         $body = mysqli_real_escape_string($this->con, $body);
-        $check_empty = preg_replace('/\s+/', '', $body);//delets all spaces
+        $check_empty = preg_replace('/\s+/', '', $body);//deletes all spaces
        // echo "<script>alert('Alert $imageName')</script>";
 
         if($check_empty !=="" || $imageName!==NULL){//either there is text and image,or jus text or just image, in the post
 
-            /*//        Yotube link posting
+            /*//        Youtube link posting
             //!         Buggy on linux 
 
             $body_array = preg_split("/\s+/",$body);
@@ -72,7 +72,7 @@ class Post {
             $duplicate_post_query=mysqli_query($this->con,"SELECT date_added FROM posts WHERE post_hash='$post_hash' ORDER BY id DESC LIMIT 1");
             $duplicate_array=mysqli_fetch_assoc($duplicate_post_query);
 
-            $duplicate_post=0;//false to avoid undefined variable in case not duplicate post so ther is no data in query 
+            $duplicate_post=0;//false to avoid undefined variable in case not duplicate post so their is no data in query 
             if($duplicate_array){
                 $date_added1=$duplicate_array['date_added'];//2020-03-01 04:21:50
                 $data_type_to_compare=gettype($date_added1);//string
@@ -82,20 +82,20 @@ class Post {
                 $current_time_data_type=gettype($current_time);//string
                 $int_current_time=strtotime($current_time);//1583016748
                 $int_current_data_type=gettype($int_current_time);//integer
-                $diffrenece= $int_current_time - $int_date;//38
-                $waiting_time=300-$diffrenece;
+                $difference= $int_current_time - $int_date;//38
+                $waiting_time=300-$difference;
                 
-                if($diffrenece>0 && $diffrenece<300){
+                if($difference>0 && $difference<300){
                     $duplicate_post=1;//true
                 }
                 
                 /*
-                ! This is duplicate post worning which is also executing when we are clicking on delete post. so disabled it
+                ! This is duplicate post warning which is also executing when we are clicking on delete post. so disabled it
 
                 if($duplicate_post && isset($_POST['post_text'])){
                     $check = $_POST['post_text'];
-                    //echo "<script>alert('Date added is: $date_added1 and data type is: $data_type_to_compare <br> int_date: $int_date data type: $int_data_type <br> current time: $current_time data type: $current_time_data_type current int time:$int_current_time data type: $int_current_data_type Diffrence in seconds: $diffrenece'); </script>";
-                    echo "<script>alert('Duplicate post detected, to avoid spamming we allow duplicate post evey 5 minuts wait for $waiting_time seconds more Check is: $check')</script>";
+                    //echo "<script>alert('Date added is: $date_added1 and data type is: $data_type_to_compare <br> int_date: $int_date data type: $int_data_type <br> current time: $current_time data type: $current_time_data_type current int time:$int_current_time data type: $int_current_data_type Difference in seconds: $difference'); </script>";
+                    echo "<script>alert('Duplicate post detected, to avoid spamming we allow duplicate post every 5 minute wait for $waiting_time seconds more Check is: $check')</script>";
                 }*/
             }
             
@@ -104,7 +104,7 @@ class Post {
                 //insert post
                 //$query = mysqli_query($this->con, "INSERT INTO posts VALUES('', '$body', '$added_by', '$user_to', '$date_added','no','no','0')");//SQL does not accept '' as NULL
                 $query = mysqli_query($this->con, "INSERT INTO posts VALUES(NULL, '$body', '$added_by', '$user_to', '$date_added','no','no','0','$post_hash','$imageName')");
-                $returned_id = mysqli_insert_id($this->con);//this function returnes the post id inserted in db
+                $returned_id = mysqli_insert_id($this->con);//this function return's the post id inserted in db
                 
                 
                 //insert notification
@@ -140,8 +140,8 @@ class Post {
         $data_query = mysqli_query($this->con,"SELECT * FROM posts  WHERE deleted='no' ORDER BY id DESC");//Very inefficient because currently it is loading all posts at once
         //
         //TODO we must use
-        //! mysqli_query($this->con,"SELECT * FROM posts  WHERE deleted='no' ORDER BY id DESC LIMI $Start $limit);
-        // But doing this will will only load 10 posts and noMorePosts variable will be set to TRUE which will preven any more posts from loading
+        //! mysqli_query($this->con,"SELECT * FROM posts  WHERE deleted='no' ORDER BY id DESC LIMIT $Start $limit);
+        // But doing this will will only load 10 posts and noMorePosts variable will be set to TRUE which will prevent any more posts from loading
         // So we need to change ajax_load_posts.php index.php Post.php for that so currently i am leaving this as it is
         //TODO But to improve speed i must follow above
         //TODO PossibleSolution :https://www.youtube.com/watch?v=XRAlEbVL8vQ
@@ -173,15 +173,15 @@ class Post {
                     continue;
                 }
 
-                //Check if user who posted, has theri account closed
+                //Check if user who posted, has their account closed
                 $added_by_obj = new User($this->con, $added_by);
                 if($added_by_obj -> isClosed()){//isClosed User.php function returns true or false
-                    continue; //if friend account is closed this itteration of while loop is skiped
+                    continue; //if friend account is closed this iteration of while loop is skipped
                 }
 
                 $user_logged_obj = new User($this->con,$userLoggedIn);
                 if($user_logged_obj -> isFriend($added_by)){//if friend or self
-                    ////temorary all user posts are visible to each other make second recturn to false to turn it off on inside isFriend() function
+                    ////temporary all user posts are visible to each other make second return to false to turn it off on inside isFriend() function
                     
 
                     if($num_iterations++ < $start) // $start is form which number posts needed to be loaded
@@ -190,7 +190,7 @@ class Post {
                     //Once 10 posts have been loaded, break
                     // Count=1 limit=10
                     if($count > $limit){  // True if $count=11 > $limit=10 
-                        break;            // It breaks the loap
+                        break;            // It breaks the loop
                     }else{
                         $count++; //counts number of iterations run
                     }
@@ -208,7 +208,7 @@ class Post {
 
 
                     /*
-                    ! this part is for comments, it gives evey post a id to click
+                    ! this part is for comments, it gives every post a id to click
                     TODO: maybe i can make this function take post id as a parameter instead of making new function for every post.
                     */
                     ?>
@@ -349,7 +349,7 @@ class Post {
                                     <iframe src='comment_frame.php?post_id=$id' class='comment_iframe' id='comment_iframe$id' frameborder='0'></iframe>
                                 </div>";
                             /*<hr>
-                         post id to loead posts are sent through this line as a GET request
+                         post id to load posts are sent through this line as a GET request
                             //!<iframe src='comment_frame.php?post_id=$id>
                             to load comments against the post id */
 
@@ -407,10 +407,10 @@ class Post {
                         $user_to = "To <a href='".$user_to_obj -> getUsername()."'>". $user_to_name ."</a>";
                     }
                     
-                    //Check if user who posted, has theri account closed
+                    //Check if user who posted, has their account closed
                     $added_by_obj = new User($this->con, $added_by);
                     if($added_by_obj -> isClosed()){//isClosed User.php function returns true or false
-                        continue; //if friend account is closed this itteration of while loop is skiped
+                        continue; //if friend account is closed this iteration of while loop is skipped
                     }
 
                     $user_logged_obj = new User($this->con,$userLoggedIn);
@@ -546,8 +546,8 @@ class Post {
         $data_query = mysqli_query($this->con,"SELECT * FROM posts  WHERE deleted='no'AND ((added_by='$profileUser' AND user_to='none')OR user_to='$profileUser') ORDER BY id DESC");//Very inefficient because currently it is loading all posts at once
         //
         //TODO we must use
-        //! mysqli_query($this->con,"SELECT * FROM posts  WHERE deleted='no' ORDER BY id DESC LIMI $Start $limit);
-        // But doing this will will only load 10 posts and noMorePosts variable will be set to TRUE which will preven any more posts from loading
+        //! mysqli_query($this->con,"SELECT * FROM posts  WHERE deleted='no' ORDER BY id DESC LIMIT $Start $limit);
+        // But doing this will will only load 10 posts and noMorePosts variable will be set to TRUE which will prevent any more posts from loading
         // So we need to change ajax_load_posts.php index.php Post.php for that so currently i am leaving this as it is
         //TODO But to improve speed i must follow above
         //TODO PossibleSolution :https://www.youtube.com/watch?v=XRAlEbVL8vQ
@@ -565,10 +565,10 @@ class Post {
                 $date_time=$row['date_added'];
                 $imagePath= $row['image'];
 
-                // !Check if user who posted, has theri account closed ***controvasal***
+                // !Check if user who posted, has their account closed ***controversial***
                 $added_by_obj = new User($this->con, $added_by);
                 if($added_by_obj -> isClosed()){//isClosed User.php function returns true or false
-                    continue; //if friend account is closed this itteration of while loop is skiped
+                    continue; //if friend account is closed this iteration of while loop is skipped
                 }
 
                 if($num_iterations++ < $start) // $start is form which number posts needed to be loaded
@@ -577,7 +577,7 @@ class Post {
                 //Once 10 posts have been loaded, break
                 // Count=1 limit=10
                 if($count > $limit){  // True if $count=11 > $limit=10 
-                    break;            // It breaks the loap
+                    break;            // It breaks the loop
                 }else{
                     $count++; //counts number of iterations run
                 }
@@ -595,7 +595,7 @@ class Post {
 
 
                 /*
-                ! this part is for comments, it gives evey post a id to click
+                ! this part is for comments, it gives every post a id to click
                 TODO: maybe i can make this function take post id as a parameter instead of making new function for every post.
                 */
                 ?>
@@ -732,7 +732,7 @@ class Post {
                                 <iframe src='comment_frame.php?post_id=$id' class='comment_iframe' id='comment_iframe$id' frameborder='0'></iframe>
                             </div>
                         <hr>
-                    ";/* post id to loead posts are sent through this line as a GET request
+                    ";/* post id to load posts are sent through this line as a GET request
                         //!<iframe src='comment_frame.php?post_id=$id>
                         to load comments against the post id */
 
@@ -802,10 +802,10 @@ class Post {
                     continue;
                 }
 
-                //Check if user who posted, has theri account closed
+                //Check if user who posted, has their account closed
                 $added_by_obj = new User($this->con, $added_by);
                 if($added_by_obj -> isClosed()){//isClosed User.php function returns true or false
-                    continue; //if friend account is closed this itteration of while loop is skiped
+                    continue; //if friend account is closed this iteration of while loop is skipped
                 }
 
                 $user_logged_obj = new User($this->con,$userLoggedIn);
@@ -824,7 +824,7 @@ class Post {
 
 
                     /*
-                    ! this part is for comments, it gives evey post a id to click
+                    ! this part is for comments, it gives every post a id to click
                     TODO: maybe i can make this function take post id as a parameter instead of making new function for every post.
                     */
                     ?>
@@ -888,7 +888,7 @@ class Post {
                                     <iframe src='comment_frame.php?post_id=$id' class='comment_iframe' id='comment_iframe$id' frameborder='0'></iframe>
                                 </div>";
                             /*<hr>
-                         post id to loead posts are sent through this line as a GET request
+                         post id to load posts are sent through this line as a GET request
                             //!<iframe src='comment_frame.php?post_id=$id>
                             to load comments against the post id */
 

@@ -166,7 +166,8 @@ nav{
 	width:65%;
 	z-index: -1;
     min-height:150px;
-    margin-left: 10px;;
+	margin-left: 10px;
+	margin-right: 10px;
 }
 .main_column h5{
 	text-align: center;
@@ -269,7 +270,7 @@ textarea:focus{
 .comment_iframe{
 	width: 100%;
 	padding-top: 10px;
-	min-height: 110px;/* prevents "function toggle()" on "Post.php" from setting comment box heigt to too low*/
+	min-height: 110px;/* prevents "function toggle()" on "Post.php" from setting comment box height to too low*/
 }
 .comment_section img {
     padding-right: 10px;
@@ -398,10 +399,14 @@ textarea:focus{
 	color: #fff;
 }
 
+
 .profile_left button[type="button"]{
 	margin: 7px 0 0 7px;
 	position: relative;
 	
+}
+.no_request{
+	text-align: center;
 }
 .friend_requests h4{
 	text-align: center;
@@ -918,7 +923,7 @@ p#sectuser{
 	background: #555;
   }
 
-  /*notification droapdown*/
+  /*notification dropdown*/
 
   .notificationsProfilePic img{
 	  width: 55px !important;
