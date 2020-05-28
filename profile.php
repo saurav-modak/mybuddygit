@@ -11,7 +11,18 @@ if(isset($_GET['profile_username'])) {
 	$num_friends = (substr_count($user_array['friend_array'], ",")) - 1;
 }
 
-
+//msg sending
+$message_obj = new Message($con, $userLoggedIn);
+if(isset($_POST['post_message'])){
+    if(isset($_POST['message_body'])){
+        $body = mysqli_real_escape_string($con, $_POST['message_body']);
+        $date = date("Y-m-d H:i:s");
+		$message_obj -> sendMessage($username, $body, $date);
+		echo "<script>setTimeout(function (){setMsgTabActive();scrollbottom();},500);</script>";
+		//without setTimeout the function call was happening before page loaded fully and function not defined error produced
+		
+    }
+}
 
 if(isset($_POST['remove_friend'])) {
 	$user = new User($con, $userLoggedIn);
@@ -131,7 +142,7 @@ if(isset($_POST['respond_request'])) {
 				<div class="message_post">
 					<form action="" method="POST">
 						<textarea name='message_body' id='message_textarea' placeholder='Write your message...'></textarea>
-						<input type='submit' name='post_message' class='info' id='message_submit' value='Send'>
+						<input type='submit' name='post_message' class='info' id='message_submit' value='Send' onclick="setMsgTabActive();">
 					</form>
 
 				</div>
@@ -177,11 +188,30 @@ uses hibuddy.js to submit the post
     </div>
 	
 	<script >
+		function setMsgTabActive(){
+			setTimeout(function (){
+			var msgtab = document.getElementById('nav-contact-tab');
+			var msg = document.getElementById('nav-contact');
+			var newstab= document.getElementById('nav-home-tab');
+			var news= document.getElementById('nav-home');
+
+			msgtab.classList.add('active');
+			newstab.classList.remove('active');
+	
+			msg.classList.add('active');
+			msg.classList.add('show');
+			news.classList.remove('active');
+			news.classList.remove('show');
+
+			},100);
+			
+		}
+
 		//SCROLL TO THE BOTTOM FOR MESSAGE TAB
 		function scrollbottom(){
 			setTimeout(function (){
 				$('.load_messages').scrollTop($('.load_messages')[0].scrollHeight);
-			}, 1000);//WAIT FOR 1 SECOND BEFORE SCROLLING
+			}, 100);//WAIT FOR .5 SECOND BEFORE SCROLLING
 		}
 		/* Ajax call and infinite crolling */
 		var userLoggedIn= '<?php echo $userLoggedIn; ?>';
@@ -197,7 +227,7 @@ uses hibuddy.js to submit the post
 		*/
 		$(document).ready(function(){
 			$('#loading').show();
-		
+			
 			//Original ajax request for loading first posts
 			$.ajax({
 				url:"includes/handlers/ajax_load_profile_posts.php",
@@ -244,6 +274,7 @@ uses hibuddy.js to submit the post
 							}
 						}
 					});
+					
 				
 				} //end if
 				return false;
