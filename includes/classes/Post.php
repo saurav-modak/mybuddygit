@@ -45,11 +45,11 @@ class Post {
 				if (strpos($value, "www.youtube.com/watch?v=") !== false){
 					$link = preg_split("!&!", $value);
 					$value = preg_replace("!watch\?v=!", "embed/" , $link[0]);
-					$value = "<br><iframe width=\'90%\' height=\'450px\' src=\'" . $value . "\' allowfullscreen></iframe><br>";
+					$value = "<br><iframe width=\'100%\' height=\'450px\' src=\'" . $value . "\' allowfullscreen></iframe>";
 					$body_array[$key] = $value;
 				} elseif (strpos($value, "youtu.be/") !== false) {
 					$link = preg_split("!\.be/!", $value);
-					$value = "<br><iframe width=\'420\' height=\'235\' src=\'https://www.youtube.com/embed/" . $link[1] . "\'></iframe><br>";
+					$value = "<br><iframe width=\'420\' height=\'235\' src=\'https://www.youtube.com/embed/" . $link[1] . "\'></iframe>";
 					$body_array[$key] = $value;
 				}
 			}
@@ -317,7 +317,7 @@ class Post {
             */
                     if($imagePath != NULL){
                         $imageDiv ="<div class='postedImage'>
-                                        <img src='$imagePath'><br>
+                                        <img src='$imagePath'>
                                     </div>";
                     }else{
                         $imageDiv=NULL;
@@ -331,12 +331,12 @@ class Post {
                                 </div>
                                 <div class='posted_by' style='color:#ACACAC;'>
                                     <a href='$added_by'>$first_name $last_name </a>
-                                    $user_to &nbsp;&nbsp;&nbsp;&nbsp;<a href='post.php?id=$id'>$time_message</a>
+                                    $user_to &nbsp;posted &nbsp;<a href='post.php?id=$id'>$time_message</a>
                                     $delete_button
                                 </div>
                                 <div id='post_body'>
                                     $body      
-                                    <br>
+                                    
                                     $imageDiv
                                     
                                 </div>
@@ -864,7 +864,7 @@ class Post {
                         $imageDiv=NULL;
                     }
 
-                    $str .="<div class='status_post main-column column' onClick='javascript:toggle$id()'>
+                    $str .="<div class='single_post status_post' onClick='javascript:toggle$id()'>
                                 <div class='post_profile_pic'>
                                     <img src='$profile_pic' width='50'>
                                 </div>

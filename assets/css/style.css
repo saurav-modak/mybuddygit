@@ -253,7 +253,7 @@ textarea:focus{
 	border-radius: 5px;
 	margin-bottom: 10px;
 }
-
+/*
 .postedImage img{
 	
 	margin-bottom:-20px;
@@ -264,7 +264,7 @@ textarea:focus{
 	border-bottom-left-radius:8px;
 	border-bottom-right-radius:8px;
 	box-shadow:1px 2px 7px -1px #0c0c0c;
-}
+}*/
 
 .comment_iframe{
 	width: 100%;
@@ -512,11 +512,11 @@ textarea:focus{
 
 	
 }
-
 .postedImage img{
-	max-width: 100%;
+	width: 100%;
+	clear: both;
     display: block;
-    margin: 5px auto;
+    
 }
 
 #post_body iframe{
