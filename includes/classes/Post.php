@@ -196,7 +196,7 @@ class Post {
                     }
 
                     if($userLoggedIn==$added_by)
-                        $delete_button = "<button class='delete_button btn-danger' id='post$id'><div class='delete_text'>X</div></button>";
+                        $delete_button = "<div class='delete_icon' id='post$id'><img src='assets\images\icons\delete.png'></div>";
                     else
                         $delete_button ="";
 
@@ -583,7 +583,7 @@ class Post {
                 }
 
                 if($userLoggedIn==$added_by)
-                    $delete_button = "<button class='delete_button btn-danger' id='post$id'><div class='delete_text'>X</div></button>";
+                    $delete_button = "<div class='delete_icon' id='post$id'><img src='assets\images\icons\delete.png'></div>";
                 else
                     $delete_button ="";
 
@@ -812,7 +812,7 @@ class Post {
                
 
                     if($userLoggedIn==$added_by)
-                        $delete_button = "<button class='delete_button btn-danger' id='post$id'><div class='delete_text'>X</div></button>";
+                        $delete_button = "<div class='delete_icon' id='post$id'><img src='assets\images\icons\delete.png'></div>";
                     else
                         $delete_button ="";
 

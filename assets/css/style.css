@@ -111,9 +111,9 @@ nav{
 .column{
 	background-color: #fff;
 	padding: 10px;
-	border: 1px solid #848484;
-	border-radius: 5px;
-	box-shadow: 2px 2px 1px #848484;
+	/*border: 1px solid #848484;
+	border-radius: 5px;*/
+	box-shadow: 3px 4px 6px #a7a1a1;
 	z-index: -1;
 
 }
@@ -477,15 +477,16 @@ textarea:focus{
 	height: 35px;
     width: 25% !important;
 }
-
+/*
 .delete_button{
 	width: 22px;
     height: 22px;
     float: right;
 	border-radius: 9px;
 	
-}
+}*/
 /*auto generated */
+/*
 #posts_area .posted_by .delete_text{
 	left:auto; position:relative;
 	top:auto; text-decoration:none;
@@ -494,7 +495,12 @@ textarea:focus{
 	text-transform:none;
 	line-height:12.9px;
 	font-size:13px;
-}
+} */
+.delete_icon img{
+	float: right;   
+    width: 25px;
+	margin-top: -25px;
+}	
 
 .profile_main_column{
 	min-width: 675px;
@@ -555,7 +561,7 @@ textarea:focus{
 /*messages */
 
 
-#main_column_msg .load_messages{
+.load_messages{
 	overflow-y:scroll;
 	height: 72vh;
 	background-color: hsla(208, 97%, 46%, 0.03);

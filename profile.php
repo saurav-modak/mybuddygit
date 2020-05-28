@@ -18,7 +18,7 @@ if(isset($_POST['post_message'])){
         $body = mysqli_real_escape_string($con, $_POST['message_body']);
         $date = date("Y-m-d H:i:s");
 		$message_obj -> sendMessage($username, $body, $date);
-		echo "<script>setTimeout(function (){setMsgTabActive();scrollbottom();},500);</script>";
+		echo "<script>setTimeout(function (){setMsgTabActive();scrollbottom();},100);</script>";
 		//without setTimeout the function call was happening before page loaded fully and function not defined error produced
 		
     }
