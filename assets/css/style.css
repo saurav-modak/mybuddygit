@@ -505,6 +505,12 @@ textarea:focus{
 	float: right;   
     width: 25px;
 	margin-top: -25px;
+	margin-right: 0px;
+}
+.delete_icon img:hover{
+	margin-top: -27px;
+	margin-right: -2px;
+    width: 29px;
 }	
 
 .profile_main_column{
